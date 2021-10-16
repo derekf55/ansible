@@ -1,0 +1,25 @@
+---
+
+- hosts: all
+  become: true
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3" 
+  tasks:
+
+  - name: update repos
+    apt: 
+      update_cache: yes
+
+  - name: Install python
+    apt:
+      name: 
+        - python3-apt
+        - python3-pip
+
+  - name: Copy folder
+    copy: src=derekModule dest=~
+  
+  - name: Install derek_functions
+    pip:
+      name: ~/derekModule
+      executable: pip3
