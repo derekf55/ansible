@@ -1,0 +1,22 @@
+---
+
+- hosts: proxmoxHosts
+  become: true
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3" 
+  tasks:
+
+    - name: update repos
+      apt: 
+        update_cache: yes
+
+    - name: Install Packages
+      apt:
+        name:
+          - vim
+          - ifupdown2
+          - ethtools
+          - git
+
+    - name: Install derek_fucntions
+      import_playbook: install_derek_functions.yaml 
