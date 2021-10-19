@@ -1,6 +1,6 @@
 ---
 
-- hosts: testHost
+- hosts: proxmoxHosts
   become: true
   vars:
     ansible_python_interpreter: "/usr/bin/python3" 
@@ -15,18 +15,16 @@
         name:
           - vim
           - ifupdown2
-          - ethtools
+          - ethtool
           - git
+          - corosync-qdevice
 
-    - name: Install derek_fucntions
-      import_playbook: install_derek_functions.yaml 
-    
-    - name: Copy checksend backup
-      copy: src=check_send_backup.py dest=~
+    # - name: Copy checksend backup
+    #   copy: src=check_send_backup.py dest=~
 
-    - name: Set up cron job
-      ansible.builtin.cron:
-        name: "Check and send backup"
-        minute: "0"
-        hour: "5"
-        job: "python3 ~/check_send_backup.py"
+    # - name: Set up cron job
+    #   ansible.builtin.cron:
+    #     name: "Check and send backup"
+    #     minute: "30"
+    #     hour: "4"
+    #     job: "python3 ~/check_send_backup.py"
