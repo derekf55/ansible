@@ -24,12 +24,9 @@
         repo: "https://github.com/derekf55/server_scripts.git"
         dest: ~/server_scripts/
 
-    # - name: Copy checksend backup
-    #   copy: src=check_send_backup.py dest=~
-
-    # - name: Set up cron job
-    #   ansible.builtin.cron:
-    #     name: "Check and send backup"
-    #     minute: "30"
-    #     hour: "4"
-    #     job: "python3 ~/check_send_backup.py"
+    - name: Set up cron job
+      ansible.builtin.cron:
+        name: "Check and send backup"
+        minute: "30"
+        hour: "4"
+        job: "python3 ~/server_scripts/check_send_backup.py"
