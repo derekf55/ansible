@@ -22,7 +22,7 @@
     - name: Pull required server software from git
       ansible.builtin.git:
         repo: "https://github.com/derekf55/server_scripts.git"
-        dest: ~/
+        dest: ~/server_scripts/
 
     # - name: Copy checksend backup
     #   copy: src=check_send_backup.py dest=~
