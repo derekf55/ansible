@@ -19,6 +19,11 @@
           - git
           - corosync-qdevice
 
+    - name: Pull required server software from git
+      ansible.builtin.git:
+        repo: "https://github.com/derekf55/server_scripts.git"
+        dest: ~/
+
     # - name: Copy checksend backup
     #   copy: src=check_send_backup.py dest=~
 
